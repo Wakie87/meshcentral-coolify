@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  meshcentral:
+    image: 'ghcr.io/ylianst/meshcentral:master'
+    restart: unless-stopped
+    environment:
+      - SERVICE_URL_MESHCENTRAL
+      - NODE_ENV=production
+      - DYNAMIC_CONFIG=false
+      - HOSTNAME=${SERVICE_FQDN_MESHCENTRAL}
+      - REGEN_SESSIONKEY=true
+      - ALLOW_NEW_ACCOUNTS=false
+      - TRUSTED_PROXY=all
+      - REVERSE_PROXY=${SERVICE_URL_MESHCENTRAL}
+      - REVERSE_PROXY_TLS_PORT=443
+      - WEBRTC=false
+    volumes:
+      - 'data:/opt/meshcentral/meshcentral-data'
+      - 'user_files:/opt/meshcentral/meshcentral-files'
+      - 'backup:/opt/meshcentral/meshcentral-backups'
+      - 'web:/opt/meshcentral/meshcentral-web'
+
+volumes:
+  data: null
+  user_files: null
+  backup: null
+  web: null
