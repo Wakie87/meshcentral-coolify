@@ -6,7 +6,7 @@ services:
     environment:
       - SERVICE_URL_MESHCENTRAL
       - NODE_ENV=production
-      - DYNAMIC_CONFIG=false
+      - DYNAMIC_CONFIG=true
       - HOSTNAME=${SERVICE_FQDN_MESHCENTRAL}
       - REGEN_SESSIONKEY=true
       - ALLOW_NEW_ACCOUNTS=false
